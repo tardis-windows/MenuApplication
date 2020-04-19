@@ -2,6 +2,7 @@
 #include <ctime>
 
 using namespace std;
+
 int userInputToInt(string userInput);
 void populateArray(int arr[], int arrayLength);
 void printArray(int arr[],int arrayLength);
@@ -9,57 +10,71 @@ void searchArray(int arr[], int target, int arrayLength);
 void sortArray(int arr[], int arrayLength);
 void welcomeMessage();
 
+// working on extended branch 
+
 int main()
 {
 
     srand(time(NULL));
     welcomeMessage();
 
-string userInput;
-cout << "Enter the option from the menu: ";
-cin >> userInput;
-int userOption = userInputToInt(userInput);
+    string userInput;
+    cout << "Enter the option from the menu: ";
+    cin >> userInput;
+    int userOption = userInputToInt(userInput);
 
-int arrayLength;
-cout << "enter arraylength: ";
-cin >> arrayLength;
+    int arrayLength;
+    cout << "enter arraylength: ";
+    cin >> arrayLength;
 
-int arr[arrayLength]={};
+    int arr[arrayLength]={};
 
 
-while(userOption != 6){
+    while(userOption != 6)
+    {
 
-    switch(userOption){
-        case 1:{
-            populateArray(arr,arrayLength);
+        switch(userOption){
+            case 1:
+            {
+                populateArray(arr,arrayLength);
+                break;
+            }
+            case 2:
+            {
+                printArray(arr,10);
+                break;
+            }
+            case 3:
+            {
+                int target;
+                cout << "Enter value you want to search: ";
+                cin >> target;
+                searchArray(arr,target,arrayLength);
             break;
-        }
-        case 2:{
-            printArray(arr,10);
-            break;}
-        case 3:{
-            int target;
-            cout << "Enter value you want to search: ";
-            cin >> target;
-            searchArray(arr,target,arrayLength);
-            break;}
-        case 4:
-            sortArray(arr,arrayLength);
-            cout << "Array is sorted." << endl;
-            break;
-        case 5:
-            cout << "Writing array.." <<endl;
-            break;
-        case 6:{
-            cout << "Exiting program" << endl ;
-            exit(0);
+            }
+            case 4:
+            {
+                sortArray(arr,arrayLength);
+                cout << "Array is sorted." << endl;
+                break;
+            }
+            case 5:
+            {
+                cout << "Writing array.." <<endl;
+                break;
+            }
+             case 6:
+            {
+                cout << "Exiting program" << endl ;
+                exit(0);
+            }
         }
     }
 
-     welcomeMessage();
+    welcomeMessage();
     cin >> userInput;
     userOption = userInputToInt(userInput);
-}
+    
 
     return 0;
 }
